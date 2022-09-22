@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+<h1 align="middle">{{ doll.type }}</h1>
+<div class="row p-5 container">
+    {% for doll in dolls %}
+    <div class="col-md-3">
+        <div class="card-mb-2">
+            <p><a href="{% url 'doll_detail' doll.pk %}"> <img class="card-img-top" src="../{{ doll.image }}"
+                  height="420"></a></p>
+            <div class="card-body">
+                <h4 class="card-title">{{ doll.name }}</h4>
+                <h5 class="card-text"><b>{{ doll.available }}</b></h5>
+                <p class="card-text">{{ doll.description | slice:":100" }}</p>
+                <h5 class="card-title">{{ doll.price }}</h5>
+                <a href="{% url 'doll_detail' doll.pk %}" class="btn btn-primary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

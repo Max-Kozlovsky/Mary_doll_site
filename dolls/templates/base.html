@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Mary's Dolls</title>
+    <style>
+
+    li {
+    list-style-type: none; /* Убираем маркеры */
+    font-size: 150%
+   }
+   body { background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed}
+   a {
+    text-decoration: none; /* Отменяем подчеркивание у ссылки */
+   }
+   ul.social-icons li {
+    display: inline; /* Отображать как строчный элемент */
+    }
+
+   </style>
+</head>
+<body background="{% static 'site_img/bg1.jpg' %}">
+    <div class="container" align="middle">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'site_img/logo.jpg' %}" width="120" height="120">
+            </div>
+        <div class="col-8">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'main' %}">Главная</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                            Куклы
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'interior_dolls_list' %}">Интерьерные
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'for_game_dolls_list' %}">Игровые</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Одежда для кукол</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                            Игрушки
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'toys_list' %}">Игрушки</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Одежда для игрушек</a></li>
+                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'contacts' %}">Контакты</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="row col-6">
+                    <ul class="social-icons">
+                        <li><a class="social-icon-insta" href="https://www.instagram.com/dolls_by_mary_mary/" target="_blank">
+                            <img src="{% static 'site_img/insta_logo.png' %}" width="50" height="50"></a>
+                        </li>
+                        <li>
+                            <a class="social-icon-vk" href="https://vk.com/dolls_by_mary_mary" target="_blank">
+                                <img src="{% static 'site_img/vk_logo.jpg' %}" width="50" height="50"></a>
+                        </li>
+                        <li><a class="social-icon-telegram" href="https://t.me/dolls_by_mary_mary" target="_blank">
+                            <img src="{% static 'site_img/tg_logo.png' %}" width="50" height="50"></a>
+                        </li>
+                        <li><a class="social-icon-ok" href="https://m.ok.ru/profile/558906961365" target="_blank">
+                            <img src="{% static 'site_img/ok_logo.png' %}" width="50" height="50"></a>
+                        </li>
+                    </ul>
+            </div>
+            </nav>
+        </div>
+            </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<link href="{% static 'js/bootstrap.bundle.min.js' %}">
+
+
+{% block page_content %}
+
+{% endblock %}
+</body>
+</html>

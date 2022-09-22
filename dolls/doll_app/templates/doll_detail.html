@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>{{ doll.title }}</h1>
+<div class="row" align="middle">
+    <div class="top-cover">
+        <div class="col-md-5">
+            <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel" align="middle">
+                <div class="carousel-inner" align="middle">
+                    <div class="carousel-item active" align="middle">
+                        <img src="../../../{{doll.image}}" class="d-block w-40" alt="category" height="600"
+                             align="middle">
+                    </div>
+                    {% for photo in photos %}
+                    <div class="carousel-item" align="middle">
+                        <img src="../../../{{photo.img}}" class="d-block w-40" alt="category" height="600" align="middle">
+                    </div>
+                {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" align="center">
+        <h5 align="middle">{{ doll.title }}</h5>
+        <p>{{ doll.description }}</p>
+        <h5>Цена: {{doll.price}}</h5>
+        <a href="{% url 'send_order' doll.pk %}" class="btn btn-primary">Перейти к заказу</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<br>
+<div class="row">
+    <div class="col-md-6 gx-5" align="middle">
+        <form action="{% url 'send_order' doll.pk %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"> Заказать </button>
+        </form>
+    </div>
+    <div class="col-md-6" align="middle">
+        <div class="col-md-12" align="center">
+            <h3>Детали заказа</h3>
+            <h5 align="middle">{{ doll.name }}</h5>
+        </div>
+        <div class="col-md-6">
+            <p align="center"><img src="../../../{{ doll.image }}" alt="{{doll.title}}" width="150" height="200"></p>
+        </div>
+        <div class="col-md-12" align="center">
+            <h5>Стоимость: {{ doll.price }}</h5>
+        </div>
+    </div>
+</div>
+{% endblock %}
