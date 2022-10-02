@@ -21,14 +21,8 @@ class Dolls(models.Model):
 
 
 class Photo(models.Model):
-    dolls = Dolls.objects.all()
-    print(tuple(elem['name'] for elem in dolls.values()))
-    category_choice = []
-    for el in tuple(elem['name'] for elem in dolls.values()):
-        category_choice.append(tuple((el, el)))
-    category_choice = tuple(category_choice)
-    category = models.CharField(max_length=50, choices=category_choice)
+    dolls = models.ForeignKey(Dolls, on_delete=models.CASCADE, null=True)
     img = models.FileField(upload_to='static/photo/')
 
     def __str__(self):
-        return self.category
+        return self.dolls.name

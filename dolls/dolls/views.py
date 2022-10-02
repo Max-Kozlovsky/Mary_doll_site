@@ -40,3 +40,7 @@ def send_order(request, pk):
         'form': form,
     }
     return render(request, 'order.html', context)
+
+
+def not_found(request, exception):
+    return render(request, '404.html')

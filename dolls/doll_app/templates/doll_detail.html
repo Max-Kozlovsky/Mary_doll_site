@@ -3,18 +3,22 @@
 
 {% block page_content %}
 <h1>{{ doll.title }}</h1>
-<div class="row" align="middle">
-    <div class="top-cover">
-        <div class="col-md-5">
-            <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel" align="middle">
-                <div class="carousel-inner" align="middle">
+<section class="content reasons container-fluid">
+    <br>
+<div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-5" align="right">
+            <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
                     <div class="carousel-item active" align="middle">
-                        <img src="../../../{{doll.image}}" class="d-block w-40" alt="category" height="600"
+                        <img src="../../../{{doll.image}}" class="d-block w-40" alt="category" height="500"
                              align="middle">
                     </div>
                     {% for photo in photos %}
                     <div class="carousel-item" align="middle">
-                        <img src="../../../{{photo.img}}" class="d-block w-40" alt="category" height="600" align="middle">
+                        <img src="../../../{{photo.img}}" class="d-block w-40" alt="category" height="500"
+                             align="middle">
                     </div>
                 {% endfor %}
               </div>
@@ -28,12 +32,19 @@
               </button>
             </div>
         </div>
-    </div>
-    <div class="col-md-12" align="center">
-        <h5 align="middle">{{ doll.title }}</h5>
-        <p>{{ doll.description }}</p>
-        <h5>Цена: {{doll.price}}</h5>
-        <a href="{% url 'send_order' doll.pk %}" class="btn btn-primary">Перейти к заказу</a>
-    </div>
+        <div class="col-md-4" align="center">
+            <div class="h-75 d-inline-block">
+                <h5 align="middle">{{ doll.title }}</h5>
+                <p><font face="georgia">{{ doll.description }}</font></p>
+
+            </div>
+            <br><br>
+            <div>
+                <h5>Цена: {{doll.price}}</h5>
+                <br>
+                <a href="{% url 'send_order' doll.pk %}" class="btn btn-primary">Перейти к заказу</a>
+            </div>
+        </div>
 </div>
+</section>
 {% endblock %}

@@ -25,3 +25,5 @@ urlpatterns = [
     path('dolls/', include('doll_app.urls')),
     path('order/<int:pk>/', views.send_order, name='send_order'),
 ]
+
+

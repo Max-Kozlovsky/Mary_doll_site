@@ -1,12 +1,42 @@
 {% extends "base.html" %}
-    {% block page_content %}
-    <h1 align="middle">Контакты</h1>
-    <div align="center" >
-        <ul>
-            <li>Instagram: </li>
-            <li>OK</li>
-            <li>VK</li>
-            <li>Telegram</li>
+{% load static %}
+{% block page_content %}
+<h1 align="middle">Контакты</h1>
+<br>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+        <p><font size=6 face="Times New Roman"><b>
+            У вас остались вопросы?<br>
+            Хотите уточнить детали или предложить свои правки в модель куклы?<br>
+            Возможно, у вас есть идея для индивидуального заказа?<br>
+            Смело пишите мне в социальные сети, и мы обсудим все детали.</b></font></p>
+    </div>
+    <div class="col-md-3">
+        <img src=" {% static 'site_img/mary_contacts.jpg' %}" alt="@dolls_by_mary_mary" width="300" height="300"
+             align="center">
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="row col-11">
+        <ul class="social-icons">
+            <li><a class="social-icon-insta" href="https://www.instagram.com/dolls_by_mary_mary/" target="_blank">
+                <img src="{% static 'site_img/insta_contacts.png' %}" width="300" height="150"></a>
+            </li>
+            <li>
+                <a class="social-icon-vk" href="https://vk.com/dolls_by_mary_mary" target="_blank">
+                    <img src="{% static 'site_img/vk_contacts.png' %}" width="300" height="150"></a>
+            </li>
+            <li><a class="social-icon-telegram" href="https://t.me/dolls_by_mary_mary" target="_blank">
+                <img src="{% static 'site_img/tg_contacts.jpg' %}" width="300" height="150"></a>
+            </li>
+            <li><a class="social-icon-ok" href="https://m.ok.ru/profile/558906961365" target="_blank">
+                <img src="{% static 'site_img/ok_contacts.png' %}" width="300" height="150"></a>
+            </li>
         </ul>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
