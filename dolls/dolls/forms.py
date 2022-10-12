@@ -30,3 +30,9 @@ class Order(forms.Form):
                             }),
                             label='Телефон',
                             required='')
+    info = forms.CharField(max_length=1000,
+                           widget=forms.Textarea(attrs={
+                               "class": "form-control",
+                           }),
+                           label='Дополнительная информация',
+                           required='')

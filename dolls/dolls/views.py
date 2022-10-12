@@ -25,13 +25,15 @@ def send_order(request, pk):
         city = form.cleaned_data['city']
         address = form.cleaned_data['address']
         phone = form.cleaned_data['phone']
+        info = form.cleaned_data['info']
         if len(name + city + address + phone) > 0:
             bot = TeleBot(TELEGRAM_BOT_API_KEY)
             bot.send_message(telegram_chat_id, f"Заказ куклы {doll.name}.\n"
                                                f"Данные заказчика:\n"
                                                f"ФИО: {name}, \n"
                                                f"Адрес: {city + ' ' + address},\n"
-                                               f"Контактный телефон: {phone}")
+                                               f"Контактный телефон: {phone}\n"
+                                               f"Информация от заказчика: {info}")
             return redirect('after_order')
     else:
         form = Order()
