@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1 align="center">Ваш заказ</h1>
+<div class="container">
+     <table class="table">
+            <thead>
+                <tr>
+                      <th class="col-2">Кукла</th>
+                      <th class="col-2">Изображение</th>
+                      <th class="col-2">Количество</th>
+                      <th class="col-2">Цена</th>
+                      <th class="col-2">Стоимость</th>
+                      <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in basket %}
+                <tr>
+                    <th scope="row"><b>{{ item.name }}</b></th>
+                    <td align="left"><img src="../{{ item.image }}" alt="{{ item.name }}" width="110" height="150"></td>
+                    <td align="left"><b>{{ item.count }}</b></td>
+                    <td align="left"><b>{{ item.price }} рублей</b></td>
+                    <td align="left"><b>{{ item.total_price }} рублей</b></td>
+                    <td align="left">
+                        <a href="{% url 'basket:basket_remove' item.id %}" class="btn btn-danger">Удалить</a>
+                    </td>
+                {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">Итоговая стоимость</th>
+                    <td colspan="4" align="right"><b>{{ basket.get_total_price }} рублей</b></td>
+                </tr>
+
+            </tbody>
+        </table>
+</div>
+<div class="container">
+    <br><br>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-2">
+            <a href="{% url 'send_order' %}" class="btn btn-primary">Перейти к заказу</a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'basket:basket_clear' %}" class="btn btn-danger">Очистить корзину</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -13,7 +13,7 @@ class Dolls(models.Model):
     type = models.CharField(max_length=30, choices=type_choice)
     available = models.CharField(max_length=30)
     description = models.TextField()
-    price = models.CharField(max_length=20)
+    price = models.IntegerField()
     image = models.FileField(upload_to='static/img/')
 
     def __str__(self):

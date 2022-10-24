@@ -22,8 +22,9 @@ urlpatterns = [
     path('', views.main, name='main'),
     path('contacts/', views.contacts, name='contacts'),
     path('after_order', views.after_order, name='after_order'),
+    path('basket/', include(('basket.urls', 'basket'), namespace='basket')),
     path('dolls/', include('doll_app.urls')),
-    path('order/<int:pk>/', views.send_order, name='send_order'),
+    path('order/', views.send_order, name='send_order'),
 ]
 
 

@@ -4,6 +4,7 @@
 <h1 align="middle">{{ doll.type }}</h1>
 <div class="row p-5 container">
     {% for doll in dolls %}
+    <div class="col-1"></div>
     <div class="col-md-3">
         <div class="card-mb-3">
             <p><a href="{% url 'doll_detail' doll.pk %}"> <img class="card-img-top" src="../{{ doll.image }}"
@@ -11,11 +12,11 @@
             <div class="h-75 d-inline-block" align="center">
                 <h4 class="card-title">{{ doll.name }}</h4>
                 <h5 class="card-text"><b>{{ doll.available }}</b></h5>
-                <p class="card-text"><font size="4">{{ doll.description | slice:":70" }}...</font></p>
+                <p class="card-text"><font size="4">{{ doll.description | slice:":60" }}...</font></p>
             </div>
             <br><br>
             <div align="center">
-                <h5 class="card-title">{{ doll.price }}</h5>
+                <h5 class="card-title">{{ doll.price }} рублей</h5>
                 <a href="{% url 'doll_detail' doll.pk %}" class="btn btn-primary">Подробнее</a>
             </div>
             <br><br>

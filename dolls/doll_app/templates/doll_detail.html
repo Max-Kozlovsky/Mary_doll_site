@@ -40,9 +40,13 @@
             </div>
             <br><br>
             <div>
-                <h5>Цена: {{doll.price}}</h5>
+                <h5>Цена: {{doll.price}} рублей</h5>
                 <br>
-                <a href="{% url 'send_order' doll.pk %}" class="btn btn-primary">Перейти к заказу</a>
+                <form action="{% url 'basket:basket_add' doll.id %}" method="POST">
+                    {{ basket_product_form }}
+                    {% csrf_token %}
+                    <input class="btn btn-primary" type="submit" value="В корзину">
+                </form>
             </div>
         </div>
 </div>

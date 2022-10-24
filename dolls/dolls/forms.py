@@ -32,6 +32,7 @@ class Order(forms.Form):
                             required='')
     info = forms.CharField(max_length=1000,
                            widget=forms.Textarea(attrs={
+                               "rows": 5,
                                "class": "form-control",
                            }),
                            label='Дополнительная информация',

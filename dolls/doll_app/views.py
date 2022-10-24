@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Dolls, Photo
+from basket.forms import BasketAddProductForm
 
 
 def interior_dolls_list(request):
@@ -45,8 +46,10 @@ def toy_wear(request):
 def doll_detail(request, pk):
     doll = Dolls.objects.get(pk=pk)
     photos = Photo.objects.filter(dolls=doll)
+    basket_product_form = BasketAddProductForm()
     context = {
         'doll': doll,
-        'photos': photos
+        'photos': photos,
+        'basket_product_form': basket_product_form
     }
     return render(request, 'doll_detail.html', context)

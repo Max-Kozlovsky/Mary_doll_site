@@ -31,11 +31,11 @@
 
    </style>
 </head>
-<body background="{% static 'site_img/bg1.jpg' %}">
+<body background="{% static 'site_img/bg4.jpg' %}">
     <div class="container" align="middle">
         <div class="row">
             <div class="col-2">
-                <img src="{% static 'site_img/logo.jpg' %}" width="120" height="120">
+                <img src="{% static 'site_img/logo2.png' %}" width="170" height="170">
             </div>
         <div class="col-8">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -75,7 +75,19 @@
                     </ul>
                     </div>
                 </div>
-                <div class="row col-6">
+                <div class="cart col-3" align="right">
+                    {% with total_items=cart|length %}
+                        {% if basket|length > 0 %}
+                            Ваши заказы:
+                            <a href="{% url 'basket:basket_detail' %}">
+                                {{ basket|length }} моделей на {{ basket.get_total_price }} рублей
+                            </a>
+                        {% else %}
+                            <b>Корзина пока пуста...</b>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                <div class="row col-5">
                     <ul class="social-icons">
                         <li><a class="social-icon-insta" href="https://www.instagram.com/dolls_by_mary_mary/" target="_blank">
                             <img src="{% static 'site_img/insta_logo.png' %}" width="50" height="50"></a>

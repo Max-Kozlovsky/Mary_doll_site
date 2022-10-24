@@ -3,25 +3,45 @@
 
 {% block page_content %}
 <br>
-<div class="row">
-    <div class="col-md-6 gx-5" align="middle">
-        <form action="{% url 'send_order' doll.pk %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit"> Заказать </button>
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 gx-5" align="middle">
+            <form action="{% url 'send_order' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-success btn-lg btn-block" type="submit"> Заказать </button>
+            </form>
+        </div>
+        <div class="container col-md-5" align="left">
+            <h3 align="center">Детали заказа</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                      <th class="col-2">Кукла</th>
+                      <th class="col-2">Количество</th>
+                      <th class="col-2">стоимость</th>
+                      <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in basket %}
+                <tr>
+                    <th scope="row">{{ item.name }}</th>
+                    <td align="center">{{ item.count }}</td>
+                    <td align="center">{{ item.price }}</td>
+                    <td align="center"><a href="{% url 'basket:basket_remove' item.id %}" class="btn btn-danger">Удалить
+                    </a></td>
+                </tr>
+            {% endfor %}
+                <tr>
+                    <th scope="row">Итоговая стоимость</th>
+                    <td colspan="3" align="center"><b>{{ basket.get_total_price }} рублей</b></td>
+                </tr>
+            </tbody>
+        </table>
+            <br><br>
+
     </div>
-    <div class="col-md-6" align="middle">
-        <div class="col-md-12" align="center">
-            <h3>Детали заказа</h3>
-            <h5 align="middle">{{ doll.name }}</h5>
-        </div>
-        <div class="col-md-6">
-            <p align="center"><img src="../../../{{ doll.image }}" alt="{{doll.title}}" width="150" height="200"></p>
-        </div>
-        <div class="col-md-12" align="center">
-            <h5>Стоимость: {{ doll.price }}</h5>
-        </div>
     </div>
 </div>
 {% endblock %}
