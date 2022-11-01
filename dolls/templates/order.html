@@ -8,7 +8,7 @@
         <div class="col-md-5 gx-5" align="middle">
             <form action="{% url 'send_order' %}" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.as_table }}
                 <button class="btn btn-success btn-lg btn-block" type="submit"> Заказать </button>
             </form>
         </div>

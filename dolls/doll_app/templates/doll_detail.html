@@ -40,7 +40,7 @@
             </div>
             <br><br>
             <div>
-                <h5>Цена: {{doll.price}} рублей</h5>
+                <h5>Цена за единицу: {{doll.price}} рублей</h5>
                 <br>
                 <form action="{% url 'basket:basket_add' doll.id %}" method="POST">
                     {{ basket_product_form }}

@@ -4,13 +4,19 @@ from doll_app.models import Dolls
 
 class Basket:
     def __init__(self, request):
-        self.session = request.session
-        basket = self.session.get(settings.CART_SESSION_ID)
+        self.session = request.session  # инициализация корзины, делает её доступной для других классов
+        basket = self.session.get(settings.CART_SESSION_ID)  # получение корзины из текущей сессии
         if not basket:
-            basket = self.session[settings.CART_SESSION_ID] = {}
+            basket = self.session[settings.CART_SESSION_ID] = {}  # если не существует, создаем новую
         self.basket = basket
 
     def add(self, doll, count=1, update_count=False):
+        """
+        добавляем продукт в корзину
+        :param doll: экземпляр товара для добавления или обновления корзины
+        :param count: количество
+        :param update_count: True - новое количество, False - добавить к существующему количеству
+        """
         doll_id = str(doll.id)
         if doll_id not in self.basket:
             self.basket[doll_id] = {
@@ -27,16 +33,19 @@ class Basket:
         self.save()
 
     def save(self):
+        """Сохранение изменений в корзине"""
         self.session[settings.CART_SESSION_ID] = self.basket
         self.session.modified = True
 
     def remove(self, doll):
+        """Удаление элемента из корзины"""
         doll_id = str(doll.id)
         if doll_id in self.basket:
             del self.basket[doll_id]
             self.save()
 
     def __iter__(self):
+        """Делаем корзину итерируемой"""
         doll_ids = self.basket.keys()
         dolls = Dolls.objects.filter(id__in=doll_ids)
         for doll in dolls:
@@ -49,15 +58,14 @@ class Basket:
             yield item
 
     def __len__(self):
+        """Количество товаров в корзине"""
         return sum(item['count'] for item in self.basket.values())
 
     def get_total_price(self):
-        """
-        Подсчет стоимости товаров в корзине.
-        """
+        """Подсчет стоимости товаров в корзине."""
         return sum(item['price'] * int(item['count']) for item in self.basket.values())
 
     def clear(self):
-        # удаление корзины из сессии
+        """Удаление корзины из сессии"""
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True

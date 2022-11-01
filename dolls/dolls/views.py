@@ -44,7 +44,3 @@ def send_order(request):
         'form': form,
     }
     return render(request, 'order.html', context)
-
-
-def not_found(request):
-    return render(request, '404.html')

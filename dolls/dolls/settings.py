@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Minsk'
 
 USE_I18N = True
 
@@ -128,7 +128,7 @@ STATICFILES_DIRS = (
 TELEGRAM_BOT_API_KEY = tg_api_key
 telegram_chat_id = tg_chat_id
 
-CART_SESSION_ID = 'bascet'
+CART_SESSION_ID = 'basket'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 86400
